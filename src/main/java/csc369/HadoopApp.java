@@ -23,10 +23,10 @@ public class HadoopApp {
         Configuration conf = new Configuration();
         Job job = new Job(conf, "Hadoop example");
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
-		System.out.println(otherArgs[0])
-		System.out.println(otherArgs[1])
-		System.out.println(otherArgs[2])
-		System.out.println(otherArgs[3])
+		System.out.println(otherArgs[0]);
+		System.out.println(otherArgs[1]);
+		System.out.println(otherArgs[2]);
+		System.out.println(otherArgs[3]);
 
 	if (otherArgs.length < 3) {
 	    System.out.println("Expected parameters: <job class> [<input dir>]+ <output dir>");
