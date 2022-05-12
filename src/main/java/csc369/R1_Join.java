@@ -45,10 +45,16 @@ public class R1_Join {
 
 	@Override
 	    public void reduce(Text key, Iterable<Text> values, Context context)  throws IOException, InterruptedException {
-	    ArrayList<String> name = new ArrayList();
-	    ArrayList<String> messages = new ArrayList();
-
-		context.write(values[0], values[1]);
+        int counter = 0;
+        Text[] values_list;
+    
+            
+        for (Text val : values) {
+            values_list[counter] = val;
+            counter += 1;
+        }
+    
+        context.write(values_list[0], values_list[1]);
 	    
 	}
     } 
