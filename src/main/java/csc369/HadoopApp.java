@@ -63,6 +63,21 @@ public class HadoopApp {
 	    job.setOutputValueClass(R1_AL_Processing.OUTPUT_VALUE_CLASS);
 	    FileInputFormat.addInputPath(job, new Path(otherArgs[1]));
 	    FileOutputFormat.setOutputPath(job, new Path(otherArgs[2]));
+	} else if ("R1_Join".equalsIgnoreCase(otherArgs[0])) {
+
+	    conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator",",");
+
+	    MultipleInputs.addInputPath(job, new Path(otherArgs[1]),
+					TextInputFormat.class, R1_Join.ALMapper.class );
+	    MultipleInputs.addInputPath(job, new Path(otherArgs[2]),
+					KeyValueTextInputFormat.class, R1_Join.CountryMapper.class ); 
+
+	    job.setReducerClass(R1_Join.JoinReducer.class);
+
+	    job.setOutputKeyClass(R1_Join.OUTPUT_KEY_CLASS);
+	    job.setOutputValueClass(R1_Join.OUTPUT_VALUE_CLASS);
+	    FileOutputFormat.setOutputPath(job, new Path(otherArgs[3]));
+
 	} else {
 	    System.out.println("Unrecognized job: " + otherArgs[0]);
 	    System.exit(-1);
