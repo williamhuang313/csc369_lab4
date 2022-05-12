@@ -53,7 +53,8 @@ public class UserMessages {
 		for (Text val : values) {
 			context.write(key, val);
 		}
-    } 
+    }
+	} 
 
 
 }
