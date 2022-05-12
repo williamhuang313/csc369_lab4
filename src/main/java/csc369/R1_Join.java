@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.IntWritable;
@@ -46,7 +47,7 @@ public class R1_Join {
 	@Override
 	    public void reduce(Text key, Iterable<Text> values, Context context)  throws IOException, InterruptedException {
         int counter = 0;
-        Text[] values_list;
+        Text[] values_list = {};
     
             
         for (Text val : values) {
