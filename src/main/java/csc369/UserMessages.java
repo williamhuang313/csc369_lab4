@@ -47,12 +47,16 @@ public class UserMessages {
 
 	@Override
 	    public void reduce(Text key, Iterable<Text> values, Context context)  throws IOException, InterruptedException {
-	    ArrayList<String> name = new ArrayList();
-	    ArrayList<String> messages = new ArrayList();
+	    int counter = 0;
+		Text[] values_list;
 
+		
 	    for (Text val : values) {
-		context.write(key, val);
+		values_list[counter] = val;
+		counter += 1;
 	    }
+
+		context.write(values_list[0], values_list[1]);
 	}
     } 
 
