@@ -65,8 +65,6 @@ public class HadoopApp {
 	    FileOutputFormat.setOutputPath(job, new Path(otherArgs[2]));
 	} else if ("R1_Join".equalsIgnoreCase(otherArgs[0])) {
 
-	    conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator",",");
-
 	    MultipleInputs.addInputPath(job, new Path(otherArgs[1]),
 					TextInputFormat.class, R1_Join.ALMapper.class );
 	    MultipleInputs.addInputPath(job, new Path(otherArgs[2]),
