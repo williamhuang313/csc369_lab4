@@ -70,7 +70,7 @@ public class HadoopApp {
 	    MultipleInputs.addInputPath(job, new Path(otherArgs[1]),
 					TextInputFormat.class, R1_Join.ALMapper.class );
 	    MultipleInputs.addInputPath(job, new Path(otherArgs[2]),
-					KeyValueTextInputFormat.class, R1_Join.CountryMapper.class ); 
+					TextInputFormat.class, R1_Join.CountryMapper.class ); 
 
 	    job.setReducerClass(R1_Join.JoinReducer.class);
 
