@@ -27,7 +27,7 @@ public class R1_Sort {
 	protected void reduce(IntWritable count, Iterable<Text> countries, Context context) throws IOException, InterruptedException {
             
         for (Text country : countries) {
-            IntWritable int_count = new IntWritable(Integer.parseInt(count.get() * -1));
+            IntWritable int_count = new IntWritable(count.get() * -1);
             context.write(int_count, country);
         }
     }
