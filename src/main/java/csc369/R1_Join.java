@@ -58,7 +58,7 @@ public class R1_Join {
                 count = value[0];
             }
             else {
-                country = value[1];
+                country = value[0];
             }
         }
 
