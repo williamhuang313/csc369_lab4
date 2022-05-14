@@ -18,9 +18,9 @@ public class R1_Join {
     public static final Class OUTPUT_VALUE_CLASS = Text.class;
 
     // Mapper for log file
-    public static class ALMapper extends Mapper<LongWritable, Text, Text, Text> {
+    public static class ALMapper extends Mapper<Text, Text, Text, Text> {
 	@Override
-	    public void map(LongWritable key, Text value, Context context)  throws IOException, InterruptedException {
+	    public void map(Text key, Text value, Context context)  throws IOException, InterruptedException {
         String[] sa = value.toString().split("\t");
         Text hostname = new Text();
 	    hostname.set(sa[0]);
