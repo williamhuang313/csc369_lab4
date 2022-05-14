@@ -76,6 +76,13 @@ public class HadoopApp {
 	    job.setOutputValueClass(R1_Join.OUTPUT_VALUE_CLASS);
 	    FileOutputFormat.setOutputPath(job, new Path(otherArgs[3]));
 
+	} else if ("R1_Reduce".equalsIgnoreCase(otherArgs[0])) {
+	    job.setReducerClass(R1_Reduce.ReducerImpl.class);
+	    job.setMapperClass(R1_Reduce.MapperImpl.class);
+	    job.setOutputKeyClass(R1_Reduce.OUTPUT_KEY_CLASS);
+	    job.setOutputValueClass(R1_Reduce.OUTPUT_VALUE_CLASS);
+	    FileInputFormat.addInputPath(job, new Path(otherArgs[1]));
+	    FileOutputFormat.setOutputPath(job, new Path(otherArgs[2]));
 	} else {
 	    System.out.println("Unrecognized job: " + otherArgs[0]);
 	    System.exit(-1);
