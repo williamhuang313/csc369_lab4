@@ -22,7 +22,7 @@ public class R1_Reduce {
         String[] sa = value.toString().split("\t");
         Text country = new Text();
 	    country.set(sa[0]);
-        IntWritable count = new Intwritable(sa[1]);
+        IntWritable count = new IntWritable(sa[1]);
         context.write(country, count);
         }
     }
