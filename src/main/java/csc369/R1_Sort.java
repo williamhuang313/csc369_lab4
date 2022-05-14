@@ -16,8 +16,7 @@ public class R1_Sort {
         String[] sa = value.toString().split("\t");
         Text country = new Text();
 	    country.set(sa[0]);
-        IntWritable count = new IntWritable(Integer.parseInt(sa[1]));
-        count = count * -1;
+        IntWritable count = new IntWritable(Integer.parseInt(sa[1]) * -1);
         context.write(count, country);
         }
     }
@@ -28,7 +27,8 @@ public class R1_Sort {
 	protected void reduce(IntWritable count, Iterable<Text> countries, Context context) throws IOException, InterruptedException {
             
         for (Text country : countries) {
-            context.write(count * -1, country);
+            IntWritable int_count = new IntWritable(Integer.parseInt(count.get() * -1));
+            context.write(int_count, country);
         }
     }
 }
