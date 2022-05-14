@@ -90,7 +90,20 @@ public class HadoopApp {
 	  //  job.setOutputValueClass(R1_Sort.OUTPUT_VALUE_CLASS);
 	  //  FileInputFormat.addInputPath(job, new Path(otherArgs[1]));
 	  //  FileOutputFormat.setOutputPath(job, new Path(otherArgs[2]));} 
-	else {
+	else if ("R2_Join".equalsIgnoreCase(otherArgs[0])) {
+
+	    MultipleInputs.addInputPath(job, new Path(otherArgs[1]),
+					TextInputFormat.class, R2_Join.ALMapper.class );
+	    MultipleInputs.addInputPath(job, new Path(otherArgs[2]),
+					TextInputFormat.class, R2_Join.CountryMapper.class ); 
+
+	    job.setReducerClass(R2_Join.JoinReducer.class);
+
+	    job.setOutputKeyClass(R2_Join.OUTPUT_KEY_CLASS);
+	    job.setOutputValueClass(R2_Join.OUTPUT_VALUE_CLASS);
+	    FileOutputFormat.setOutputPath(job, new Path(otherArgs[3]));
+
+	} else {
 	    System.out.println("Unrecognized job: " + otherArgs[0]);
 	    System.exit(-1);
 	}
