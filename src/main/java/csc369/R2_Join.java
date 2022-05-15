@@ -49,7 +49,7 @@ public class R2_Join {
 	@Override
 	    public void reduce(Text key, Iterable<Text> values, Context context)  throws IOException, InterruptedException {
         
-        List<String> url_list = new ArrayList<String>();
+        ArrayList<String> url_list = new ArrayList<String>();
         String country = new String();
 
         for (Text val : values) {
